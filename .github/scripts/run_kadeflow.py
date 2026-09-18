@@ -292,10 +292,10 @@ def main():
 
      plugin_dir = Path(os.environ.get("LYENV_HOME", "")) / "plugins" / plugin_name
      if not plugin_dir.exists():
-      logger.error(f"Plugin dir not found: {plugin_dir}")
-      raise SystemExit(1)
- logger.info(f"Using plugin dir: {plugin_dir}")
- cfg_path = plugin_dir / "config.yaml"
+         logger.error(f"Plugin dir not found: {plugin_dir}")
+         raise SystemExit(1)
+     logger.info(f"Using plugin dir: {plugin_dir}")
+     cfg_path = plugin_dir / "config.yaml"
 
         # -------- apply config overrides to plugin config.yaml --------
         overrides = flow.get("kade", {}).get("config_overrides", {}) or {}
