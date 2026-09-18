@@ -281,17 +281,21 @@ def main():
             logger.info(f"project.plugin_source={plugin_source}")
 
         # -------- install plugin --------
-        if plugin_source:
-            rc, tail = run_cmd_stream(logger, f"lyenv plugin install {shlex.quote(plugin_source)}")
-        else:
-            rc, tail = run_cmd_stream(logger, f"lyenv plugin install {shlex.quote(plugin_name)}")
+        #if plugin_source:
+          #  rc, tail = run_cmd_stream(logger, f"lyenv plugin install {shlex.quote(plugin_source)}")
+       # else:
+        #    rc, tail = run_cmd_stream(logger, f"lyenv plugin install {shlex.quote(plugin_name)}")
 
-        if rc != 0:
-            logger.error(f"Plugin install failed rc={rc}")
-            raise SystemExit(rc)
+       # if rc != 0:
+       #     logger.error(f"Plugin install failed rc={rc}")
+      #      raise SystemExit(rc)
 
-        plugin_dir = find_plugin_dir(logger, plugin_name)
-        cfg_path = plugin_dir / "config.yaml"
+     plugin_dir = Path(os.environ.get("LYENV_HOME", "")) / "plugins" / plugin_name
+     if not plugin_dir.exists():
+      logger.error(f"Plugin dir not found: {plugin_dir}")
+      raise SystemExit(1)
+ logger.info(f"Using plugin dir: {plugin_dir}")
+ cfg_path = plugin_dir / "config.yaml"
 
         # -------- apply config overrides to plugin config.yaml --------
         overrides = flow.get("kade", {}).get("config_overrides", {}) or {}
