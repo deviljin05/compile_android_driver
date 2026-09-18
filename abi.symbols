@@ -1,3 +1,9 @@
-flip_open
-kernel_read
-kernel_write
+cfg80211_alloc_hw
+cfg80211_register_hw
+cfg80211_unregister_hw
+ieee80211_alloc_hw
+ieee80211_register_hw
+usb_register_driver
+usb_deregister
+register_netdev
+unregister_netdev
