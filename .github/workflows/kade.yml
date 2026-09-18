@@ -52,9 +52,8 @@ jobs:
         run: |
           set -eux
           mkdir -p "${LYENV_HOME}/plugins"
-          git clone https://github.com/systemnb/kade "${LYENV_HOME}/plugins/kade" || \
-          git clone https://github.com/systemnb/kade-plugin "${LYENV_HOME}/plugins/kade"
-          ls -la "${LYENV_HOME}/plugins/kade" 
+          git clone https://github.com/systemnb/lyenv-plugin-center "${LYENV_HOME}/plugins/lyenv-plugin-center"
+          ls -la "${LYENV_HOME}/plugins/lyenv-plugin-center"
 
       - name: Create & activate project
         run: |
