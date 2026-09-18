@@ -82,6 +82,8 @@ jobs:
             --debug \
             --log-file "${GITHUB_WORKSPACE}/kadeflow.log"
 
+            
+
       - name: Upload artifacts
         if: always()
         uses: actions/upload-artifact@v4
