@@ -57,6 +57,14 @@ jobs:
           ls -la "${GITHUB_WORKSPACE}/ci-kade/plugins/kade"
           test -f "${GITHUB_WORKSPACE}/ci-kade/plugins/kade/manifest.yaml"
 
+      - name: Register kade plugin in PATH
+        run: |
+          set -eux
+          ls -la "${GITHUB_WORKSPACE}/ci-kade/plugins/kade"
+          find "${GITHUB_WORKSPACE}/ci-kade/plugins/kade" -maxdepth 2 -name "kade" -type f -o -name "kade.sh" -type f
+          #     add plugin bin to PATH for subsequent steps
+          echo "${GITHUB_WORKSPACE}/ci-kade/plugins/kade/bin" >> $GITHUB_PATH
+
       - name: Create & activate project
         run: |
           set -eux
