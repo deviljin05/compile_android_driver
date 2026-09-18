@@ -48,6 +48,14 @@ jobs:
           cd "${GITHUB_WORKSPACE}/_lyenv"
           make install
 
+      - name: Install kade plugin manually
+        run: |
+          set -eux
+          mkdir -p "${LYENV_HOME}/plugins"
+          git clone https://github.com/systemnb/kade "${LYENV_HOME}/plugins/kade" || \
+          git clone https://github.com/systemnb/kade-plugin "${LYENV_HOME}/plugins/kade"
+          ls -la "${LYENV_HOME}/plugins/kade" 
+
       - name: Create & activate project
         run: |
           set -eux
