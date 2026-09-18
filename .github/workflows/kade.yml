@@ -51,12 +51,11 @@ jobs:
       - name: Install kade plugin manually
         run: |
           set -eux
-          mkdir -p "${LYENV_HOME}/plugins"
+          mkdir -p "${GITHUB_WORKSPACE}/ci-kade/plugins"
           git clone --depth 1 https://github.com/systemnb/lyenv-plugin-center /tmp/lyenv-plugin-center
-          ls -la /tmp/lyenv-plugin-center/plugins
-          cp -r /tmp/lyenv-plugin-center/plugins/kade "${LYENV_HOME}/plugins/kade"
-          ls -la "${LYENV_HOME}/plugins/kade"
-          test -f "${LYENV_HOME}/plugins/kade/manifest.yaml"
+          cp -r /tmp/lyenv-plugin-center/plugins/kade "${GITHUB_WORKSPACE}/ci-kade/plugins/kade"
+          ls -la "${GITHUB_WORKSPACE}/ci-kade/plugins/kade"
+          test -f "${GITHUB_WORKSPACE}/ci-kade/plugins/kade/manifest.yaml"
 
       - name: Create & activate project
         run: |
