@@ -52,8 +52,11 @@ jobs:
         run: |
           set -eux
           mkdir -p "${LYENV_HOME}/plugins"
-          git clone https://github.com/systemnb/lyenv-plugin-center "${LYENV_HOME}/plugins/lyenv-plugin-center"
-          ls -la "${LYENV_HOME}/plugins/lyenv-plugin-center"
+          git clone --depth 1 https://github.com/systemnb/lyenv-plugin-center /tmp/lyenv-plugin-center
+          ls -la /tmp/lyenv-plugin-center/plugins
+          cp -r /tmp/lyenv-plugin-center/plugins/kade "${LYENV_HOME}/plugins/kade"
+          ls -la "${LYENV_HOME}/plugins/kade"
+          test -f "${LYENV_HOME}/plugins/kade/manifest.yaml"
 
       - name: Create & activate project
         run: |
